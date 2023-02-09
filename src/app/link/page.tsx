@@ -1,4 +1,5 @@
 import { getServerSession } from 'next-auth/next'
+import { Fragment } from 'react';
 import { authOptions } from './../../pages/api/auth/[...nextauth]';
 import { SignIn, SignOut } from './actions';
 
@@ -22,7 +23,7 @@ export default async function Link() {
         console.error(error);
     }
 
-    return (
+    return (<Fragment>
         <section>
             <h1 className="font-bold text-3xl font-serif mb-5">Guestbook</h1>
             {session?.user ? (
@@ -34,6 +35,7 @@ export default async function Link() {
                 <SignIn />
             )}
         </section>
+    </Fragment>
     )
 }
 
