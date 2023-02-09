@@ -1,5 +1,39 @@
-export default function Link() {
-    return (<div className="absolute right-1/2 bottom-1/2  transform translate-x-1/2 translate-y-1/2 ">
-        <div className="border-t-transparent border-solid animate-spin  rounded-full border-orange-400 border-8 h-64 w-64"></div>
-    </div>)
+import { getServerSession } from 'next-auth/next'
+import { authOptions } from './../../pages/api/auth/[...nextauth]';
+import { SignIn, SignOut } from './actions';
+
+export const dynamic = 'force-dynamic';
+
+
+export default async function Link() {
+    let session: any;
+
+    try {
+        const [sessionRes] = await Promise.allSettled([
+            getServerSession(authOptions),
+        ]);
+
+        if (sessionRes?.status === 'fulfilled') {
+            session = sessionRes?.value;
+        } else {
+            console.error(sessionRes);
+        }
+    } catch (error) {
+        console.error(error);
+    }
+
+    return (
+        <section>
+            <h1 className="font-bold text-3xl font-serif mb-5">Guestbook</h1>
+            {session?.user ? (
+                <>
+                    LOGGED
+                    <SignOut />
+                </>
+            ) : (
+                <SignIn />
+            )}
+        </section>
+    )
 }
+
