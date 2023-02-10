@@ -28,8 +28,8 @@ export default function RootLayout({
             <Link href="/" className="text-black hover:text-gray-100">
               Reviews
             </Link>
-            <Link href="/calendar" className="text-black hover:text-gray-100">
-              Calendar
+            <Link href="/events" className="text-black hover:text-gray-100">
+              Events
             </Link>
             <Link href="/link" className="text-black hover:text-gray-100">
               Links

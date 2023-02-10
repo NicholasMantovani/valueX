@@ -1,8 +1,7 @@
 import { supabase } from "lib/supabaseClient"
 
-export const dynamic = 'auto',
-    dynamicParams = true,
-    revalidate = 0,
+export const
+    revalidate = 20,
     fetchCache = 'auto',
     runtime = 'nodejs',
     preferredRegion = 'auto'
@@ -13,7 +12,7 @@ async function getEvents() {
     return data as Event[]
 }
 
-export default async function Calendar() {
+export default async function Events() {
     const events: Event[] = await getEvents()
 
     return (
