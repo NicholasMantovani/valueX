@@ -26,7 +26,7 @@ export default async function Events() {
 
 function Card({ event }: { event: Event; }) {
     return (
-        <div className="max-w-sm rounded overflow-hidden shadow-lg border border-orange-500">
+        <div className="max-w-sm rounded overflow-hidden shadow-lg border border-orange-500 mb-4">
             <div className="px-6 py-4">
                 <div className="font-bold text-xl mb-2 text-white">{event.title}</div>
                 <div className="text-left py-3">
