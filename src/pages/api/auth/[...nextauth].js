@@ -17,6 +17,7 @@ export const authOptions = {
     url: process.env.NEXT_PUBLIC_SUPABASE_URL,
     secret: process.env.NEXT_PUBLIC_SERVICE_ROLE_KEY,
   }),
+  secret: process.env.NEXT_PUBLIC_SECRET
   // other configs...
 }
 export default NextAuth(authOptions);
