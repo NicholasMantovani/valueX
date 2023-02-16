@@ -2,13 +2,10 @@ import { EventWithReviews } from "@/app/(component)/types";
 import { supabase } from "lib/supabaseClient";
 
 async function getEventDetailWithReviews(eventId: number) {
-    const { data, error } = await supabase.from('events').select(
-        `*, reviews(*)`
-    ).eq('id', eventId)
-    const eventWithReview: EventWithReviews[] | null = data;
-    if (eventWithReview) {
-        return eventWithReview[0]
-    }
+
+    const response = await fetch(process.env.BASE_URL + '/api/events/' + eventId)
+    const events = await response.json();
+    return events as EventWithReviews
 }
 
 export default async function EventDetail({ params }: any) {
