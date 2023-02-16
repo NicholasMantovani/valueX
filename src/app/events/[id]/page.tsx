@@ -5,26 +5,29 @@ async function getEventDetailWithReviews(eventId: number) {
     const { data, error } = await supabase.from('events').select(
         `*, reviews(*)`
     ).eq('id', eventId)
-    return data as EventWithReviews[]
+    const eventWithReview: EventWithReviews[] | null = data;
+    if (eventWithReview) {
+        return eventWithReview[0]
+    }
 }
 
 export default async function EventDetail({ params }: any) {
-    const eventsWithReviews = await getEventDetailWithReviews(params.id)
-    const eventWithReview = eventsWithReviews[0]
+    const eventWithReview: EventWithReviews | undefined = await getEventDetailWithReviews(params.id)
 
     return (
         <div className="text-white">
-            <div>
+            {eventWithReview && <div>
                 <h1>Title: {eventWithReview.title}</h1>
 
                 <h3>Description: {eventWithReview.description}</h3>
                 <h5>Durata: {eventWithReview.duration}</h5>
                 {eventWithReview.reviews.map((review) => {
-                    return <div key={review.id}> {review.interesting} | {review.speech_fluidity} | {review.text_review} </div>
+                    return <div key={review.id}>REVIEW: {review.interesting} | {review.speech_fluidity} | {review.text_review} </div>
                 }
 
                 )}
             </div>
+            }
         </div>
     );
 }
