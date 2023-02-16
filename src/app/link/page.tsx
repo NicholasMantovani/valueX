@@ -24,7 +24,7 @@ export default async function Link() {
     }
 
     return (<Fragment>
-        <section>
+        <section className="flex justify-center flex-col items-center">
             <h1 className="font-bold text-3xl font-serif mb-5">Guestbook</h1>
             {session?.user ? (
                 <>
