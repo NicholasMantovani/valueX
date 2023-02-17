@@ -10,9 +10,10 @@ export const
 
 
 async function getEvents() {
-    const response = await fetch(process.env.BASE_URL + '/api/events')
-    const events = await response.json();
-    return events as Event[]
+    // const response = await fetch(process.env.BASE_URL + '/api/events')
+    // const events = await response.json();
+    // return events as Event[]
+    return []
 }
 
 export default async function Events() {

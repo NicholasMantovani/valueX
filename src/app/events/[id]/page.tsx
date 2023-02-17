@@ -7,10 +7,19 @@ export const
     preferredRegion = 'auto'
 
 async function getEventDetailWithReviews(eventId: number) {
-
-    const response = await fetch(process.env.BASE_URL + '/api/events/' + eventId)
-    const events = await response.json();
-    return events as EventWithReviews
+    // const response = await fetch(process.env.BASE_URL + '/api/events/' + eventId)
+    // const events = await response.json();
+    // return events as EventWithReviews
+    const event: EventWithReviews = {
+        id: 1,
+        reviews: [],
+        date: "",
+        title: "",
+        duration: 0,
+        description: "",
+        tags: []
+    }
+    return event
 }
 
 export default async function EventDetail({ params }: any) {
