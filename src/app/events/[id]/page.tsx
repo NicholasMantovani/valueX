@@ -1,5 +1,10 @@
 import { EventWithReviews } from "@/app/(component)/types";
-import { supabase } from "lib/supabaseClient";
+
+export const
+    revalidate = 20,
+    fetchCache = 'auto',
+    runtime = 'nodejs',
+    preferredRegion = 'auto'
 
 async function getEventDetailWithReviews(eventId: number) {
 
