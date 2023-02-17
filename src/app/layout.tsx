@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import './globals.css'
 import { Inter } from '@next/font/google'
+import { AnalyticsWrapper } from './(component)/analytics'
 
 const font = Inter({
   subsets: ['latin']
@@ -37,6 +38,7 @@ export default function RootLayout({
           </nav>
           {children}
         </main>
+        <AnalyticsWrapper />
       </body>
     </html>
   )
