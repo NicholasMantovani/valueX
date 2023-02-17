@@ -1,10 +1,10 @@
 'use client';
 
-import { createServerComponentSupabaseClient } from '@supabase/auth-helpers-nextjs';
-import { Auth, ThemeSupa } from '@supabase/auth-ui-react';
+import { Auth } from '@supabase/auth-ui-react';
 import { supabase } from 'lib/supabaseClient';
 import { signIn, signOut } from 'next-auth/react';
 import { Fragment } from 'react';
+import { saveAs } from "file-saver";
 
 
 
@@ -55,4 +55,21 @@ export function SignInWithSupabase() {
             <div className="ml-3">Sign in with GitHub</div>
         </button>
     );
+}
+
+export function DownloadExcel() {
+    async function downloadExcel() {
+        const filename: string = 'Presidents.xlsx'
+        const response = await fetch('/api/excel?fileName=' + filename)
+        const blob: Blob = await response.blob()
+        saveAs(blob, filename);
+    }
+    return (
+        <button
+            className="flex bg-black text-neutral-200 px-4 py-3 rounded-md font-semibold text-sm mb-4 hover:text-white transition-all border border-gray-800"
+            onClick={() => downloadExcel()}
+        >
+            <div className="ml-3">Download excel</div>
+        </button>
+    )
 }

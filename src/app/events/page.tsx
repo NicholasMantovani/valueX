@@ -1,5 +1,6 @@
 import Link from "next/link"
 import { Event } from "@/app/(component)/types";
+import { supabase } from "lib/supabaseClient";
 
 
 export const
@@ -10,9 +11,12 @@ export const
 
 
 async function getEvents() {
-    const response = await fetch(process.env.BASE_URL + '/api/events')
-    const events = await response.json();
-    return events as Event[]
+    //const response = await fetch(process.env.BASE_URL + '/api/events')
+    //const events = await response.json();
+    //return events as Event[]
+
+    const { data } = await supabase.from('events').select('*').order('date')
+    return data as Event[]
 }
 
 export default async function Events() {

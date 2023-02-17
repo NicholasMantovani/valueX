@@ -1,7 +1,7 @@
 import { getServerSession } from 'next-auth/next'
 import { Fragment } from 'react';
 import { authOptions } from './../../pages/api/auth/[...nextauth]';
-import { SignIn, SignOut } from './actions';
+import { DownloadExcel, SignIn, SignOut } from './actions';
 
 export const dynamic = 'force-dynamic';
 
@@ -34,7 +34,9 @@ export default async function Link() {
             ) : (
                 <SignIn />
             )}
+            <DownloadExcel />
         </section>
+
     </Fragment>
     )
 }

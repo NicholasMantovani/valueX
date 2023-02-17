@@ -19,6 +19,7 @@
     "@types/react-dom": "18.0.10",
     "@types/xlsx": "^0.0.36",
     "encoding": "^0.1.13",
+    "file-saver": "^2.0.5",
     "next": "13.1.6",
     "next-auth": "^4.19.2",
     "react": "18.2.0",
@@ -28,6 +29,7 @@
     "xlsx": "https://cdn.sheetjs.com/xlsx-latest/xlsx-latest.tgz"
   },
   "devDependencies": {
+    "@types/file-saver": "^2.0.5",
     "autoprefixer": "^10.4.13",
     "postcss": "^8.4.21",
     "supabase": "^1.38.2",
