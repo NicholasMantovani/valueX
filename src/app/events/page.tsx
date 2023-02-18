@@ -1,7 +1,7 @@
 import Link from "next/link"
 import { Event } from "@/app/(component)/types";
 import { supabase } from "lib/supabaseClient";
-
+import { Plusbutton } from "../(component)/plusbutton";
 
 export const
     revalidate = 20,
@@ -23,11 +23,16 @@ export default async function Events() {
     const events: Event[] = await getEvents()
 
     return (
-        <div className="flex flex-wrap p-5 justify-evenly mb-4 pt-8">
-            {events.map((eventMap: Event) => {
-                return <Card key={eventMap.id} event={eventMap} />
-            })}
-        </div>
+        <>
+            <div className="flex flex-wrap p-5 justify-evenly mb-4 pt-8">
+                {events.map((eventMap: Event) => {
+                    return <Card key={eventMap.id} event={eventMap} />
+                })}
+            </div>
+            <Link href={'/events/new'}>
+                <Plusbutton />
+            </Link>
+        </>
     )
 }
 
@@ -54,6 +59,7 @@ function Card({ event }: { event: Event; }) {
                 </div>
             </Link>
         </div>
+
     )
 
 }
